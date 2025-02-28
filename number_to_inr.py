@@ -40,10 +40,16 @@ def convert_to_inr(number):
         rupees = int(number)
         paise = 0
     
-    inr_words = number_to_words(rupees)
-    paise_words = number_to_words(paise)
-    
-    if paise > 0:
-        return f"Rupees {inr_words} and {paise_words} Paise Only"
+    # Handle edge cases
+    if rupees == 0 and paise == 0:
+        return "No Rupees Only"
+    elif rupees == 0:
+        paise_words = number_to_words(paise)
+        return f"Rupees {paise_words} Paise Only"
     else:
-        return f"Rupees {inr_words} Only"
+        inr_words = number_to_words(rupees)
+        if paise > 0:
+            paise_words = number_to_words(paise)
+            return f"Rupees {inr_words} and {paise_words} Paise Only"
+        else:
+            return f"Rupees {inr_words} Only"
