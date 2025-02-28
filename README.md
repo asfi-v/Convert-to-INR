@@ -87,6 +87,8 @@ To use the Python code for converting numbers to words in Indian Rupees in Offic
      ```
    - Replace `A3` with the cell reference containing the number you want to convert.
 
+     ![image](https://github.com/user-attachments/assets/87177c34-8463-46cc-9f5c-36b7164549a5)
+
 4. **Screenshot**:
 
      ![image](https://github.com/user-attachments/assets/34f62081-672a-42f6-a1e5-20311553ceca)
