@@ -69,18 +69,25 @@ To use the Python code for converting numbers to words in Indian Rupees in Offic
 
 1. **Run the Script**:
    - Copy the above python script.
-   - In the formulabar type : PY `<paste the script>`
-   - Press Ctrl + Enter. 
+
+   - In the formulabar type : =PY(
+       ![image](https://github.com/user-attachments/assets/6217e427-f6bf-461c-99ed-fa0871203174)
+
+   - =PY(`<paste the script>` 
+          ![image](https://github.com/user-attachments/assets/5c3264e4-4d60-45b3-9c6d-41440136deff)
+
+   - Then, Press Ctrl + Enter as shown in the screenshot.
+     
    - Now you can now call the `convert_to_inr` function from your Excel cells.
 
-2. **Using the Function in Excel**:
+3. **Using the Function in Excel**:
    - In a cell, you can use the function like this:
      ```excel
      =PY(convert_to_inr(xl("A3"))
      ```
    - Replace `A3` with the cell reference containing the number you want to convert.
 
-3. **Screenshot**:
+4. **Screenshot**:
 
      ![image](https://github.com/user-attachments/assets/34f62081-672a-42f6-a1e5-20311553ceca)
        
