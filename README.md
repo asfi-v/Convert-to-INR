@@ -1,8 +1,68 @@
 # Number to Words Conversion for Indian Rupees
 
 This repository contains a Python function to convert numeric values into their word representation in Indian Rupees.
+This Python script converts any given number into Indian Rupees (INR) in words, following the Indian numbering system. It supports numbers with or without decimals and formats the output with commas after **Crore**, **Lakh**, and **Thousand** as per the Indian convention.
 
 ---
+
+## Python Script
+
+Copy the below Python Code
+
+```bash
+
+  def number_to_words(num):
+    units = ["", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"]
+    teens = ["Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", 
+             "Seventeen", "Eighteen", "Nineteen"]
+    tens = ["", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", 
+            "Eighty", "Ninety"]
+    
+    def convert_chunk(n):
+        if n == 0:
+            return ""
+        elif n < 10:
+            return units[n]
+        elif 10 <= n < 20:
+            return teens[n - 10]
+        elif 20 <= n < 100:
+            return tens[n // 10] + " " + convert_chunk(n % 10)
+        elif 100 <= n < 1000:
+            return units[n // 100] + " Hundred " + convert_chunk(n % 100)
+        elif 1000 <= n < 100000:
+            return convert_chunk(n // 1000) + " Thousand, " + convert_chunk(n % 1000)
+        elif 100000 <= n < 10000000:
+            return convert_chunk(n // 100000) + " Lakh, " + convert_chunk(n % 100000)
+        elif 10000000 <= n:
+            return convert_chunk(n // 10000000) + " Crore, " + convert_chunk(n % 10000000)
+        return ""
+    
+    if num == 0:
+        return "Zero"
+    
+    return convert_chunk(num).strip()
+
+def convert_to_inr(number):
+    # Remove commas from the input number
+    number = str(number).replace(',', '')
+    
+    # Split into rupees and paise
+    if '.' in number:
+        rupees, paise = map(int, number.split('.'))
+    else:
+        rupees = int(number)
+        paise = 0
+    
+    inr_words = number_to_words(rupees)
+    paise_words = number_to_words(paise)
+    
+    if paise > 0:
+        return f"Rupees {inr_words} and {paise_words} Paise Only"
+    else:
+        return f"Rupees {inr_words} Only"
+
+```
+
 
 ## How the Function Works
 
