@@ -10,8 +10,7 @@ This Python script converts any given number into Indian Rupees (INR) in words, 
 Use the below Python Code
 
 ```bash
-
-  def number_to_words(num):
+def number_to_words(num):
     units = ["", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"]
     teens = ["Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", 
              "Seventeen", "Eighteen", "Nineteen"]
@@ -53,14 +52,19 @@ def convert_to_inr(number):
         rupees = int(number)
         paise = 0
     
-    inr_words = number_to_words(rupees)
-    paise_words = number_to_words(paise)
-    
-    if paise > 0:
-        return f"Rupees {inr_words} and {paise_words} Paise Only"
+    # Handle edge cases
+    if rupees == 0 and paise == 0:
+        return "No Rupees Only"
+    elif rupees == 0:
+        paise_words = number_to_words(paise)
+        return f"Rupees {paise_words} Paise Only"
     else:
-        return f"Rupees {inr_words} Only"
-
+        inr_words = number_to_words(rupees)
+        if paise > 0:
+            paise_words = number_to_words(paise)
+            return f"Rupees {inr_words} and {paise_words} Paise Only"
+        else:
+            return f"Rupees {inr_words} Only"
 ```
 
 # Using Python Code in Office 365 Excel
@@ -86,13 +90,14 @@ To use the Python code for converting numbers to words in Indian Rupees in Offic
      =PY(convert_to_inr(xl("A3"))
      ```
    - Replace `A3` with the cell reference containing the number you want to convert.
+     
+     ![image](https://github.com/user-attachments/assets/80ad8fe1-1d3c-4571-9c23-aa645aadbea4)
 
-     ![image](https://github.com/user-attachments/assets/87177c34-8463-46cc-9f5c-36b7164549a5)
 
 4. **Screenshot**:
 
-     ![image](https://github.com/user-attachments/assets/34f62081-672a-42f6-a1e5-20311553ceca)
-       
+      ![image](https://github.com/user-attachments/assets/8e29df41-48b7-4747-ad2f-8a17f7238ae3)
+          
 
 ## How the Function Works
 
